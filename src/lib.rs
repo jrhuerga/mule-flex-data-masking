@@ -2,7 +2,7 @@ use proxy_wasm::traits::*;
 use proxy_wasm::types::*;
 use log::info;
 use serde::{Deserialize, Serialize};
-use serde_json::{Result, Value};
+use serde_json::{Value};
 
 proxy_wasm::main! {{
     proxy_wasm::set_log_level(LogLevel::Trace);
@@ -22,15 +22,6 @@ impl Context for HttpConfigHeader {}
 impl HttpContext for HttpConfigHeader {
     fn on_http_request_headers(&mut self, _num_headers: usize, _end_of_stream: bool) -> Action {
         info!("on_http_request_headers");        
-        //if let Some(value) = self.get_http_request_header("x-custom-auth") {
-        //    if self.secret == value {
-        //        info!("on_http_request_headers allowing");
-        //        return Action::Continue;
-        //    }
-        //}
-        //info!("on_http_request_headers blocking");
-        //self.send_http_response(401, Vec::new(), None);
-        //Action::Pause   
         Action::Continue   
     }
 
@@ -58,7 +49,7 @@ impl HttpContext for HttpConfigHeader {
         if let Some(body_bytes) = self.get_http_response_body(0, _body_size) {
             info!("on_http_response_body wait read body");
             let body_str = String::from_utf8(body_bytes).unwrap();
-            let body_str_new = transform (body_str,String::from(self.field_name));
+            let body_str_new = transform (body_str,String::from(self.field_name.as_mut()));
             self.set_http_response_body(0, _body_size, &body_str_new.into_bytes());            
         }
         Action::Continue
@@ -68,7 +59,7 @@ impl HttpContext for HttpConfigHeader {
 fn transform (input: String, field: String) -> String {
    info!("transform function");    
    let mut v: Value = serde_json::from_str(input.as_str()).unwrap();
-   if let Some(field_value) = v.get(field.as_str()) {
+   if let Some(_field_value) = v.get(field.as_str()) {
        info!("transform function field found");    
        v[field] = serde_json::Value::String("############".to_owned());
    }
