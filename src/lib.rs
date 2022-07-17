@@ -13,7 +13,7 @@ proxy_wasm::main! {{
 }}
 
 struct HttpConfigHeader {
-    secret: String
+    field_name: String
 }
 
 impl Context for HttpConfigHeader {}
@@ -21,15 +21,16 @@ impl Context for HttpConfigHeader {}
 impl HttpContext for HttpConfigHeader {
     fn on_http_request_headers(&mut self, _num_headers: usize, _end_of_stream: bool) -> Action {
         info!("on_http_request_headers");        
-        if let Some(value) = self.get_http_request_header("x-custom-auth") {
-            if self.secret == value {
-                info!("on_http_request_headers allowing");
-                return Action::Continue;
-            }
-        }
-        info!("on_http_request_headers blocking");
-        self.send_http_response(401, Vec::new(), None);
-        Action::Pause   
+        //if let Some(value) = self.get_http_request_header("x-custom-auth") {
+        //    if self.secret == value {
+        //        info!("on_http_request_headers allowing");
+        //        return Action::Continue;
+        //    }
+        //}
+        //info!("on_http_request_headers blocking");
+        //self.send_http_response(401, Vec::new(), None);
+        //Action::Pause   
+        Action::Continue   
     }
 
     fn on_http_request_body(&mut self, _body_size: usize, _end_of_stream: bool) -> Action {
@@ -50,12 +51,12 @@ impl HttpContext for HttpConfigHeader {
 
 #[derive(Serialize, Deserialize)]
 struct PolicyConfig {
-     #[serde(alias = "secret-value")]
-    secret_value: String
+     #[serde(alias = "field-name")]
+    field_name: String
 }
 
 struct HttpConfigHeaderRoot {
-    secret: String
+    field_name: String
 }
 
 impl Context for HttpConfigHeaderRoot {}
@@ -64,15 +65,15 @@ impl RootContext for HttpConfigHeaderRoot {
     fn on_configure(&mut self, _: usize) -> bool {
         if let Some(config_bytes) = self.get_plugin_configuration() {
             let config:PolicyConfig = serde_json::from_slice(config_bytes.as_slice()).unwrap();
-            self.secret = config.secret_value;
-            info!("secret header is {}",self.secret);
+            self.field_name = config.field_name;
+            info!("field name is {}",self.field_name);
         }
         true
     }
 
     fn create_http_context(&self, _: u32) -> Option<Box<dyn HttpContext>> {
         Some(Box::new(HttpConfigHeader {
-            secret: self.secret.clone(),
+            field_name: self.field_name.clone(),
         }))
     }
 
