@@ -58,7 +58,7 @@ impl HttpContext for HttpConfigHeader {
         if let Some(body_bytes) = self.get_http_response_body(0, _body_size) {
             info!("on_http_response_body wait read body");
             let body_str = String::from_utf8(body_bytes).unwrap();
-            let body_str_new = transform (body_str,String::from("genre"));
+            let body_str_new = transform (body_str,String::from("gender"));
             self.set_http_response_body(0, _body_size, &body_str_new.into_bytes());            
         }
         Action::Continue
