@@ -1,5 +1,5 @@
 [package]
-name = "flex_custom_policy_auth_header"
+name = "flex_custom_policy_data_masking"
 version = "0.1.0"
 edition = "2021"
 
