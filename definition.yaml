@@ -1,11 +1,10 @@
 #%Policy Definition 0.1
 name: Custom Data Masking
 description: Replaces an attribute in the JSON response body, masking its value.
-category: Security
+category: Transformation
 providedCharacteristics:
   - Requires JSON body
 requiredCharacteristics: []
 interfaceScope: ["api", "resource"]
 interfaceTransformation: []
 encryptionSupported: true
-violationCategory: authentication
