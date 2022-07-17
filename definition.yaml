@@ -3,7 +3,7 @@ name: Custom Data Masking
 description: Replaces an attribute in the JSON response body, masking its value.
 category: Security
 providedCharacteristics:
-  - Requires authentication
+  - Requires JSON body
 requiredCharacteristics: []
 interfaceScope: ["api", "resource"]
 interfaceTransformation: []
