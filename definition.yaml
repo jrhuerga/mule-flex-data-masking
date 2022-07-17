@@ -1,6 +1,6 @@
 #%Policy Definition 0.1
-name: Custom Auth Header
-description: Enforces HTTP Basic authentication according to the details configured in the policy.
+name: Custom Data Masking
+description: Replaces an attribute in the JSON response body, masking its value.
 category: Security
 providedCharacteristics:
   - Requires authentication
