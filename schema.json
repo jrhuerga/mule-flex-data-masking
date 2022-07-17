@@ -1,5 +1,5 @@
 {
-  "title": "Custom Auth Header",
+  "title": "Custom Data Masking",
   "type": "object",
   "description": "Enforces HTTP authentication matching x-custom-auth value to what is configured in the policy.",
   "properties": {
