@@ -7,7 +7,7 @@ edition = "2021"
 
 [lib]
 crate-type = ["cdylib"]
-name="flex_custom_policy_auth_header"
+name="flex_custom_policy_data_masking"
 path="src/lib.rs"
 
 [dependencies]
