@@ -1,0 +1,26 @@
+{
+  "title": "Custom Auth Header",
+  "type": "object",
+  "description": "Enforces HTTP authentication matching x-custom-auth value to what is configured in the policy.",
+  "properties": {
+    "secret-value": {
+      "title": "Custom Auth Header Password",
+      "type": "string",
+      "@context": {
+        "@characteristics": [
+          "security:sensitive"
+        ]
+      }
+    }
+  },
+  "required": [
+    "secret-value"
+  ],
+  "unevaluatedProperties": false,
+  "@context": {
+    "@vocab": "anypoint://vocabulary/policy.yaml#",
+    "security": "anypoint://vocabulary/policy.yaml#"
+  },
+  "$id": "custom-auth-header-simple",
+  "$schema": "https://json-schema.org/draft/2019-09/schema"
+}

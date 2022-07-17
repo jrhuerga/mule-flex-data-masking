@@ -1,0 +1,11 @@
+#%Policy Definition 0.1
+name: Custom Auth Header
+description: Enforces HTTP Basic authentication according to the details configured in the policy.
+category: Security
+providedCharacteristics:
+  - Requires authentication
+requiredCharacteristics: []
+interfaceScope: ["api", "resource"]
+interfaceTransformation: []
+encryptionSupported: true
+violationCategory: authentication
