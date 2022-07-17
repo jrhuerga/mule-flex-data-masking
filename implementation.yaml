@@ -1,5 +1,5 @@
 #%Policy Implementation 1.0
 minRuntimeVersion: 1.0.0
 technology: flexGateway
-name: Custom Auth Header Impl
+name: Custom Data Masking Impl
 releaseNotes: Initial version
