@@ -2,9 +2,6 @@
 name: Custom Data Masking
 description: Replaces an attribute in the JSON response body, masking its value.
 category: Transformation
-providedCharacteristics:
-  - Requires JSON body
-requiredCharacteristics: []
 interfaceScope: ["api", "resource"]
 interfaceTransformation: []
 encryptionSupported: true
