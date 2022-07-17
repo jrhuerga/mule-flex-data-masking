@@ -5,12 +5,7 @@
   "properties": {
     "field-name": {
       "title": "Custom Data Masking Field",
-      "type": "string",
-      "@context": {
-        "@characteristics": [
-          "security:sensitive"
-        ]
-      }
+      "type": "string"
     }
   },
   "required": [
