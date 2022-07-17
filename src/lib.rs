@@ -45,8 +45,32 @@ impl HttpContext for HttpConfigHeader {
 
     fn on_http_response_body(&mut self, _body_size: usize, _end_of_stream: bool) -> Action {
         info!("on_http_response_body");
+        if !end_of_stream {
+            // Wait -- we'll be called again when the complete body is buffered
+            // at the host side.
+            info!("on_http_response_body wait end of stream");
+            return Action::Pause;
+        }
+
+        // Replace the attribute masking it.
+        // Since we returned "Pause" previuously, this will return the whole body.
+        if let Some(body_bytes) = self.get_http_response_body(0, body_size) {
+            info!("on_http_response_body wait read body");
+            let body_str = String::from_utf8(body_bytes).unwrap();
+            let body_str_new = transform (body_str,String::from("genre"));
+            self.set_http_response_body(0, body_size, &body_str_new.into_bytes());            
+        }
         Action::Continue
     }
+    
+    fn transform (input: String, field: String) -> String {
+        let mut v: Value = serde_json::from_str(input.as_str()).unwrap();
+        if let Some(fieldValue) = v.get(field.as_str()) {
+            v[field] = serde_json::Value::String("############".to_owned());
+        }
+        return v.to_string();
+}
+
 }
 
 #[derive(Serialize, Deserialize)]
