@@ -1,7 +1,7 @@
 use proxy_wasm::traits::*;
 use proxy_wasm::types::*;
 use log::info;
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Serialize, Result, Value};
 
 proxy_wasm::main! {{
     proxy_wasm::set_log_level(LogLevel::Trace);
