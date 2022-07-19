@@ -1,8 +1,6 @@
-# mule-flex-data-masking
- mule-flex-data-masking
-
-# Mule Anypoint Flex Gateway policy
-This is a demo of a Rust policy for MuleSoft Anypoint Flex. The policy essentially checks if the request contains a header x-custom-auth and if its value is the same configured in the policy. Otherwise, it returns a 401.
+# MuleSoft Anypoint Flex Data Masking policy
+ 
+This is a Rust policy for MuleSoft Anypoint Flex. The policy essentially parses the body response of the backend and checks if it contains an specific attribute. In that case the policy masks the value of the attributes.
 
 ## Configuring a Rust development environment
 
