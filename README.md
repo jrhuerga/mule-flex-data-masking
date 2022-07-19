@@ -11,7 +11,7 @@ Following steps describe how to configure a development environment on an EC2 li
 1. Create an EC2 instance with Ubuntu, of type t2.medium
 2. Download and install Rust
 
-`$ curl https://sh.rustup.rs -sSf | sh`
+    $ curl https://sh.rustup.rs -sSf | sh`
 
 3. Install build essentials
 
