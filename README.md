@@ -1,4 +1,4 @@
-# MuleSoft Anypoint Flex Data Masking policy
+# MuleSoft Anypoint Flex Gateway Data Masking policy
  
 This is a Rust policy for MuleSoft Anypoint Flex. The policy essentially parses the body response of the backend and checks if it contains an specific attribute. In that case the policy masks the value of the attributes.
 
