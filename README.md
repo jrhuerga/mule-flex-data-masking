@@ -15,17 +15,17 @@ Following steps describe how to configure a development environment on an EC2 li
 
 3. Install build essentials
 
-`$ sudo apt-get update`
+    `$ sudo apt-get update`
 
-`$ sudo apt install build-essential`
+    `$ sudo apt install build-essential`
 
 4. Configure Rust
 
-`$ sudo snap install rustup --classic`
+    `$ sudo snap install rustup --classic`
 
-`$ rustup install stable`
+    `$ rustup install stable`
 
-`$ rustup default stable`
+    `$ rustup default stable`
 
 ## Compiling the code
 Pending
