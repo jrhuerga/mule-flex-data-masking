@@ -79,14 +79,19 @@ There are three ways of registering a new Flex Gateway: using Linux binary, usin
     `mulesoft/flex-gateway:1.0.1`
 
 ## Publishing the policy in Exchange
-Pending
+Following steps describe how to publish the policy in MuleSoft Exchange.
 
-1. Point
-1. Point
-1. Point
-
-`$ sudo rm`
-
+1. Open MuleSof Exchange and click on Publish new asset
+1. Enter the name Custom Data Masking
+1. Select Policy as Asset Type
+1. Upload the file schema.json
+1. Upload the file definition.yaml. To avoid errors, make sure you keep its EOL characters in Unix format.
+1. Click on Publish. This will take a while. When it finishes, click on Implementations and Add Implementation
+1. Enter the name Custom Data Masking Impl
+1. Upload the file flex_custom_policy_data_masking.wasm
+1. Upload the file implementation.yaml. To avoid errors, make sure you keep its EOL characters in Unix format.
+1. Click on Add Implementation
+    
 
 ## Testing the policy
 Pending
