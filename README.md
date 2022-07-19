@@ -101,6 +101,6 @@ Once that the policy is published in Exchange, it will be ready to be applied to
 1. Publish an API Spec in Exchange
 1. Define in API Manager a new API in the previously created API Gateway. I recommend you using for example the [Star Wars API](https://swapi.dev/)
 1. Apply in that API instance the policy - defining as value the name of a field in a JSON  - and wait some minutes until it is applied
-1. Make a call to the API using postman. It will return a JSON body but with the field you have selected being maskes with characters like "######"
+1. Make a call to the API using postman. It will return a JSON body but with the field you have selected being masked with characters like "######"
 
 
