@@ -42,7 +42,7 @@ Following steps describe how to download the code from GitHub and compile it.
 
     `cargo build --target wasm32-unknown-unknown --release`
 
-4. This will generate a file named flex_custom_policy_data_masking.wasm in the folder target/wasm32-unknown-unknown/release . You can optionally use wasm-gc to reduce its size. If necessary, you can use an AWS S3 bucket to copy that file so it will be available on your laptop to upload it to MuleSoft Exchange using a browser.
+4. This will generate a file named _flex_custom_policy_data_masking.wasm_ in the folder _target/wasm32-unknown-unknown/release_ . You can optionally use wasm-gc to reduce its size. If necessary, you can use an AWS S3 bucket to copy that file so it will be available on your laptop to upload it to MuleSoft Exchange using a browser.
 
 
 ## Registering a Flex Gateway
@@ -81,16 +81,16 @@ There are three ways of registering a new Flex Gateway: using Linux binary, usin
 ## Publishing the policy in Exchange
 Following steps describe how to publish the policy in MuleSoft Exchange.
 
-1. Open MuleSof Exchange and click on Publish new asset
-1. Enter the name Custom Data Masking
-1. Select Policy as Asset Type
-1. Upload the file schema.json
-1. Upload the file definition.yaml. To avoid errors, make sure you keep its EOL characters in Unix format.
-1. Click on Publish. This will take a while. When it finishes, click on Implementations and Add Implementation
-1. Enter the name Custom Data Masking Impl
-1. Upload the file flex_custom_policy_data_masking.wasm
-1. Upload the file implementation.yaml. To avoid errors, make sure you keep its EOL characters in Unix format.
-1. Click on Add Implementation
+1. Open MuleSof Exchange and click on _Publish new asset_
+1. Enter the name _Custom Data Masking_
+1. Select _Policy_ as _Asset Type_
+1. Upload the file _schema.json_
+1. Upload the file _definition.yaml_. To avoid errors, make sure you keep its EOL characters in Unix format.
+1. Click on Publish. This will take a while. When it finishes, click on Implementations and _Add Implementation_
+1. Enter the name _Custom Data Masking Impl_
+1. Upload the file _flex_custom_policy_data_masking.wasm_ you obtained in previous steps after compiling the sources using Rust and Cargo
+1. Upload the file _implementation.yaml_. To avoid errors, make sure you keep its EOL characters in Unix format.
+1. Click on _Add Implementation_
     
 
 ## Testing the policy
@@ -99,6 +99,6 @@ Once that the policy is published in Exchange, it will be ready to be applied to
 1. Publish an API Spec in Exchange
 1. Define in API Manager a new API in the previously created API Gateway. I recommend you using for example the [Star Wars API](https://swapi.dev/)
 1. Apply in that API instance the policy - defining as value the name of a field in a JSON  - and wait some minutes until it is applied
-1. Make a call to the API using postman. It will return a JSON body but with the field you have selected being maskes with characters like ######
+1. Make a call to the API using postman. It will return a JSON body but with the field you have selected being maskes with characters like "######"
 
 
