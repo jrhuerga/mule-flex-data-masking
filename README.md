@@ -28,13 +28,21 @@ Following steps describe how to configure a development environment on an EC2 li
     `$ rustup default stable`
 
 ## Compiling the code
-Pending
+Following steps describe how to download the code from GitHub and compile it.
 
-1. Point
-1. Point
-1. Point
+1. Clone the repo localy in the linux box created previously:
 
-`$ sudo rm`
+    `$ git clone https://github.com/jrhuerga/mule-flex-data-masking.git`
+
+2. Change to the downloaded folder and configure the target as WebAssembly
+
+    `$ rustup target add wasm32-unknown-unknown`
+
+3. Compile the code using Cargo (Cargo is Rust's build system and package manager)
+
+    `cargo build --target wasm32-unknown-unknown --release`
+
+4. This will generate a file named flex_custom_policy_data_masking.wasm in the folder target/wasm32-unknown-unknown/release . You can optionally use wasm-gc to reduce its size. If necessary, you can use an AWS S3 bucket to copy that file so it will be available on your laptop to upload it to MuleSoft Exchange using a browser.
 
 
 ## Registering a Flex Gateway
