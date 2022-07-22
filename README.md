@@ -104,6 +104,6 @@ Once that the policy is published in Exchange, it will be ready to be applied to
 1. Make a call to the API using postman. It will return a JSON body but with the field you have selected being masked with characters like "######"
 
 ## Known issues
-The file _definition.yaml_ contain wrong information for the properties category, providedCharacteristics, requiredCharacteristics and violationCategory. This should be fixed to allow the API Manager to clasify better this policy.
+The file _definition.yaml_ contain wrong information for the properties category, providedCharacteristics, requiredCharacteristics and violationCategory. This should be fixed to allow the API Manager to clasify better this policy. Also the masking algorithm is very simplistic, as it does not act on nested attributes. Also the masking should include some initial characters of the original attributes.
 
 
